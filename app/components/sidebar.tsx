@@ -1,21 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import home from "/public/icons/home.svg";
-import Image from "next/image";
-import { File, Folder } from "lucide-react";
-import { Ghost } from "lucide-react";
-import { Calendar } from "lucide-react";
-import { Plus } from "lucide-react";
-import { Settings } from "lucide-react";
-import { FolderPlus } from "lucide-react";
+
+import { Pencil, CalendarRange } from "lucide-react";
+import { Ghost, Cookie, Home } from "lucide-react";
+
+import { CalendarClock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Sidebar() {
   return (
-    <aside className=" border-r border-zinc-700">
-      <div className="flex flex-col justify-between py-2 h-full ">
-        <ul className="flex flex-col gap-6 text-left mx-4 ">
-          <h1 className="px-16 py-4 playfair text-3xl">Crumb</h1>
-          <div className="flex justify-end gap-1">
+    <aside className="playfair hidden lg:block border-r shadow-md sticky h-screen top-0 left-0">
+      <div className="flex flex-col justify-between  h-full  ">
+        <ul className="flex flex-col  text-left mx-4 ">
+          <Link
+            href={"/dashboard"}
+            className="px-24 py-4 playfair flex gap-1 items-center hover:text-amber-500 transition-all duration-500 text-2xl font-bold "
+          >
+            <Cookie /> <p>CB</p>
+          </Link>
+          {/* <div className="flex justify-end gap-1">
             <div className="hover:bg-zinc-800 p-2 rounded-md">
               <Folder size={18} className="" />
             </div>
@@ -25,37 +28,39 @@ export default function Sidebar() {
             <div className="hover:bg-zinc-800 p-2 rounded-md">
               <Plus size={18} />
             </div>
-          </div>
+          </div> */}
           <Link
-            className="px-4 rounded-md gap-4  py-2 hover:bg-zinc-800 flex  "
-            href={"/"}
+            className="px-4 border bg-stone-100 dark:bg-stone-900 rounded-md gap-6 mb-4 items-center font-light  py-2 dark:hover:bg-zinc-800 hover:bg-zinc-100  flex  "
+            href={"/dashboard"}
           >
-            <Ghost size={18} className="" />
+            <Home size={16} className="" />
             <p>Home</p>
           </Link>
           <Link
-            className="px-4 rounded-md gap-4  py-2 hover:bg-zinc-800 flex  "
-            href={"/"}
+            className="px-4 rounded-md gap-6 mb-4 py-2 dark:hover:bg-zinc-800 hover:bg-zinc-100 flex  "
+            href={"/events"}
           >
-            <Calendar size={18} className="" />
-            <p>Calender</p>
+            <CalendarRange size={18} className="" />
+            <p>Events</p>
           </Link>
           <Link
-            className="px-4 rounded-md gap-4  py-2 hover:bg-zinc-800 flex  "
-            href={"/"}
+            className="px-4 rounded-md gap-6  mb-4 font-light items-center   py-2 dark:hover:bg-zinc-800 hover:bg-zinc-100 flex  "
+            href={"/weekly"}
           >
-            <File size={20} className="" />
-            <p>List</p>
+            <CalendarClock size={16} className="" />
+            <p>Weekly</p>
           </Link>
           <Link
-            className="px-4 rounded-md gap-4  py-2 hover:bg-zinc-800 flex  "
-            href={"/"}
+            className="px-4 rounded-md gap-6 font-light mb-4 text-base  items-center  py-2 dark:hover:bg-zinc-800 hover:bg-zinc-100 flex  "
+            href={"/tasks"}
           >
-            <Ghost size={20} className="" />
-            <p>Home</p>
+            <Pencil size={16} className="" />
+            <p>Tasks</p>
           </Link>
         </ul>
-        <button>Sign Out</button>
+        <Button className="m-4" variant={"secondary"}>
+          Sign Out
+        </Button>
       </div>
     </aside>
   );
